@@ -5,6 +5,7 @@ import { ToggleButton } from '../toggle_button/toggle_button.jsx';
 import { Coin } from './coin.jsx';
 import businesses from './businesses.json';
 import { Reset } from './reset.jsx';
+import { DEFAULT_ENVIRONMENT, ENVIRONMENTS } from '../../environments.js';
 
 function reducer(state, action) {
 	switch (action.type) {
@@ -24,7 +25,7 @@ function reducer(state, action) {
 function initialState({ businessId, environment, refonte, isMPA }) {
 	return {
 		businessId: businessId || '',
-		environment: environment || 'lab',
+		environment: environment || DEFAULT_ENVIRONMENT,
 		refonte: [true, false].includes(refonte) ? !!refonte : true,
 		isMPA: [true, false].includes(isMPA) ? !!isMPA : true
 	};
@@ -71,13 +72,26 @@ export const Configurator = ({ onSubmit }) => {
 							})
 						}
 						name={'environment'}
+						value={environment}
 					>
 						<option value={''} disabled>
 							Environnement
 						</option>
-						<option value={'lab'}>Lab</option>
-						<option value={'staging'}>Staging</option>
-						<option value={'production'}>Production</option>
+						{ENVIRONMENTS.map(({ value, label, cloudfrontId }) => (
+							<option
+								value={value}
+								key={value}
+								disabled={!cloudfrontId}
+								title={
+									!cloudfrontId
+										? 'Aucune distribution CloudFront configurée pour cet environnement'
+										: undefined
+								}
+							>
+								{label}
+								{!cloudfrontId ? ' (non configuré)' : ''}
+							</option>
+						))}
 					</select>
 				</label>
 				<label className={classes.labelContainer} htmlFor={'businessId'}>
