@@ -9,6 +9,10 @@
  *   (`https://<cloudfrontId>.cloudfront.net`). Each dev environment has its own
  *   distribution, so it has to be filled in one by one. An environment without
  *   a `cloudfrontId` is listed but not selectable.
+ *
+ * Note: the dev stacks only serve the refonte bundle (`/widget/dev<n>/2/`);
+ * their legacy path 404s. The Refonte switch stays free, but leaving it on is
+ * what works there.
  */
 
 const CLOUDFRONT_DOMAIN = 'cloudfront.net';
