@@ -21,8 +21,8 @@ const CLOUDFRONT_DOMAIN = 'cloudfront.net';
 const SHARED_CLOUDFRONT_ID = 'd2skjte8udjqxw';
 
 /**
- * CloudFront ids of the dev environments, keyed by environment value.
- * Add an entry here to make the matching `Dev*` option selectable.
+ * CloudFront ids of the dev environments, keyed by environment value. This is
+ * the list of dev environments: adding or removing an entry is enough.
  */
 const DEV_CLOUDFRONT_IDS = {
 	dev1: 'd6tyujd4hno8o',
@@ -36,15 +36,13 @@ const DEV_CLOUDFRONT_IDS = {
 	dev9: 'd37erdttzybfxk'
 };
 
-const DEV_ENVIRONMENTS = Array.from({ length: 9 }, (_, index) => {
-	const number = index + 1;
-	const value = `dev${number}`;
-	return {
+const DEV_ENVIRONMENTS = Object.entries(DEV_CLOUDFRONT_IDS).map(
+	([value, cloudfrontId]) => ({
 		value,
-		label: `Dev${number}`,
-		cloudfrontId: DEV_CLOUDFRONT_IDS[value] || null
-	};
-});
+		label: value.charAt(0).toUpperCase() + value.slice(1),
+		cloudfrontId
+	})
+);
 
 export const ENVIRONMENTS = [
 	{ value: 'lab', label: 'Lab', cloudfrontId: SHARED_CLOUDFRONT_ID },
