@@ -8,8 +8,17 @@ import { ToggleButton } from '../toggle_button/toggle_button.jsx';
 import { useModal } from '../../providers/modal_provider.jsx';
 import { Configurator } from '../configurator/configurator.jsx';
 import { Widget } from '../widget/widget.jsx';
+import { getWidgetBaseUrl } from '../../environments.js';
 
 const setWidget = ({ businessId, environment, refonte, isMPA }) => {
+	const baseUrl = getWidgetBaseUrl(environment, refonte);
+	if (!baseUrl) {
+		console.error(
+			`No CloudFront distribution configured for environment "${environment}"`
+		);
+		return;
+	}
+
 	// Pretty sensitive actually 😕
 	const moduleType = window.location.pathname.replace(/(\/|.html|multi_)/g, '');
 	window.planity = {
@@ -34,16 +43,8 @@ const setWidget = ({ businessId, environment, refonte, isMPA }) => {
 			moduleType === 'gift_vouchers' &&
 			document.getElementById('giftVoucherContainer')
 	};
-	addScriptToDOM(
-		`https://d2skjte8udjqxw.cloudfront.net/widget/${environment}${
-			refonte ? '/2' : ''
-		}/polyfills.latest.js`
-	);
-	addScriptToDOM(
-		`https://d2skjte8udjqxw.cloudfront.net/widget/${environment}${
-			refonte ? '/2' : ''
-		}/app.latest.js`
-	);
+	addScriptToDOM(`${baseUrl}/polyfills.latest.js`);
+	addScriptToDOM(`${baseUrl}/app.latest.js`);
 };
 /**
  * Used as a fallback, when having MPA and being on the website's root (URL is `/` so it's not possible to guess the page
