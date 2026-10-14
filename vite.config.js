@@ -29,6 +29,11 @@ export default defineConfig({
 					filename: 'multi_online_shop.html',
 					template: '/src/pages/multi_page_template.html'
 				},
+				'multi_cure': {
+					entry: './src/components/main.jsx',
+					filename: 'multi_cure.html',
+					template: '/src/pages/multi_page_template.html'
+				},
 				'': {
 					entry: './src/components/main.jsx',
 					filename: 'index.html',

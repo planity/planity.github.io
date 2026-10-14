@@ -12,6 +12,9 @@ export const NavButtons = ({ isMPA }) => {
 					<a className={classes.links} href={'./multi_gift_vouchers'}>
 						Cartes cadeaux
 					</a>
+					<a className={classes.links} href={'./multi_cure'}>
+						Forfaits
+					</a>
 					<a className={classes.links} href={'./multi_online_shop'}>
 						Boutique en ligne
 					</a>

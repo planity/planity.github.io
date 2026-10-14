@@ -1,72 +1,71 @@
 .navButtonContainer {
-    background-color: rgb(35, 35, 39);
-    display: grid;
-    grid: 1fr/ repeat(4, auto);
-    padding: 16px 32px;
-    flex-direction: row;
-    gap: 16px;
-    margin-bottom: 20px;
-    border: 1px solid #eef0f2;
-    border-radius: 8px 8px 0 0;
-    align-items: center;
-    justify-content: flex-end;
-    overflow: hidden;
+	background-color: rgb(35, 35, 39);
+	display: grid;
+	grid: 1fr / repeat(5, auto);
+	padding: 16px 32px;
+	flex-direction: row;
+	gap: 16px;
+	margin-bottom: 20px;
+	border: 1px solid #eef0f2;
+	border-radius: 8px 8px 0 0;
+	align-items: center;
+	justify-content: flex-end;
+	overflow: hidden;
 }
 
-
 @media only screen and (max-width: 768px) {
-    .navButtonContainer {
-        grid:repeat(4, auto)/1fr;
-        gap: 8px;
-        padding: 8px 16px;
-    }
+	.navButtonContainer {
+		grid: repeat(4, auto) / 1fr;
+		gap: 8px;
+		padding: 8px 16px;
+	}
 }
 
 .links {
-    font-family: var(--font2);
-    font-weight: 700;
-    font-size: 1em;
-    width: unset;
-    text-decoration: none;
-    position: relative;
-    color: #eef0f2;
+	font-family: var(--font2);
+	font-weight: 700;
+	font-size: 1em;
+	width: unset;
+	text-decoration: none;
+	position: relative;
+	color: #eef0f2;
 }
 
 .links:last-child {
-    color: black;
-    background-color: #eef0f2;
-    padding: 12px;
-    border-radius: 8px;
+	color: black;
+	background-color: #eef0f2;
+	padding: 12px;
+	border-radius: 8px;
 }
 
 .links:last-child:after {
-    display: none;
+	display: none;
 }
 
 .links > span {
-    position: absolute;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: underline;
-    margin-left: 8px;
-    rotate: 15deg;
+	position: absolute;
+	font-size: 18px;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-left: 8px;
+	rotate: 15deg;
 }
 
 .links:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #eef0f2;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: -5px;
+	left: 0;
+	background-color: #eef0f2;
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
 }
 
-.links:hover:after, .links:active:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+.links:hover:after,
+.links:active:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
 }
-

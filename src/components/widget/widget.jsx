@@ -14,6 +14,7 @@ export const Widget = () => {
 			<div className={classes.widgetContainer} id={'appointmentContainer'} />
 			<div className={classes.widgetContainer} id={'giftVoucherContainer'} />
 			<div className={classes.widgetContainer} id={'onlineShopContainer'} />
+			<div className={classes.widgetContainer} id={'cureContainer'} />
 		</div>
 	);
 };
