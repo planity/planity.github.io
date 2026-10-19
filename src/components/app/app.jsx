@@ -27,7 +27,8 @@ const setWidget = ({ businessId, environment, refonte, isMPA }) => {
 			myAccountSlug: isMPA && 'multi_account',
 			appointmentRedirect: isMPA && redirectToMyAccount,
 			onlineShopRedirect: isMPA && redirectToMyAccount,
-			giftVoucherRedirect: isMPA && redirectToMyAccount
+			giftVoucherRedirect: isMPA && redirectToMyAccount,
+			cureRedirect: isMPA && redirectToMyAccount
 		},
 		container: document.getElementById('planity-container'),
 		accountContainer:
@@ -41,7 +42,9 @@ const setWidget = ({ businessId, environment, refonte, isMPA }) => {
 			document.getElementById('onlineShopContainer'),
 		giftVoucherContainer:
 			moduleType === 'gift_vouchers' &&
-			document.getElementById('giftVoucherContainer')
+			document.getElementById('giftVoucherContainer'),
+		cureContainer:
+			moduleType === 'cure' && document.getElementById('cureContainer')
 	};
 	addScriptToDOM(`${baseUrl}/polyfills.latest.js`);
 	addScriptToDOM(`${baseUrl}/app.latest.js`);
